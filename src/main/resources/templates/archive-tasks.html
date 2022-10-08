@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <title>Lista ToDo</title>
+</head>
+<body>
+
+<main layout:fragment="content">
+    <div class="d-flex justify-content-center">
+        <table class="table table-success table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Kategoria</th>
+                    <th scope="col">Opis</th>
+                    <th scope="col">Wykonać do</th>
+                    <th scope="col">Data ustawienia</th>
+                    <th scope="col">Data zakończenia</th>
+                    <th scope="col">Wykonany?</th>
+                    <th scope="col">Usuń</th>
+                </tr>
+            </thead>
+            <tbody th:each="task: ${tasks}">
+                <th th:text="${task.category.type}"></th>
+                <th th:text="${task.description}"></th>
+                <th th:text="${task.deadline}"></th>
+                <th th:text="${task.dateOfSetup}"></th>
+                <th th:text="${task.taskDoneDate}"></th>
+                <th>
+                    <div th:if="${task.taskDone}" th:text="'Tak:)'"></div>
+                    <div th:unless="${task.taskDone}" th:text="'Nie!'"></div>
+                </th>
+                <th>
+                    <a th:href="'/delete/' + ${task.id}" th:text="'delete'" class="btn btn-primary"></a>
+                </th>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>

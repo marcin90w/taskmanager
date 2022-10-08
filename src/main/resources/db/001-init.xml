@@ -25,7 +25,7 @@
             <column name="task_done" type="boolean" defaultValueBoolean="false"/>
             <column name="date_of_setup" type="date" />
             <column name="deadline" type="date" />
-            <column name="task_donne_date" type="date" />
+            <column name="task_done_date" type="date" />
             <column name="category_id" type="bigint">
                 <constraints nullable="false"
                              foreignKeyName="fk_task_entity_task_id__category_id"

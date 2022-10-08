@@ -24,7 +24,7 @@ public class TaskEntity {
 
     public TaskEntity() {
         dateOfSetup = LocalDate.now();
-        taskDone = false;
+        taskDone = Boolean.FALSE;
     }
 
     public TaskEntity(Long id, String description, LocalDate dateOfSetup, LocalDate deadline, LocalDate taskDoneDate, Category category, Boolean taskDone) {
