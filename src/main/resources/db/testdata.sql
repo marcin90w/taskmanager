@@ -1,8 +1,19 @@
-INSERT INTO user(id, email, password)
-VALUES (1, 'masteradmin@byom.de', '{noop}asdf'), (2, 'admin@byom.de', '{noop}asdf'), (3, 'user@byom.de', '{noop}asdf'), (4, 'marcin90w@gmail.com', '{noop}asdf');
+INSERT INTO USER(ID, EMAIL, PASSWORD)
+VALUES
+    (1, 'masteradmin@byom.de', '{noop}asdf'),
+    (2, 'admin@byom.de', '{noop}asdf'),
+    (3, 'user@byom.de', '{noop}asdf'),
+    (4, 'marcin90w@gmail.com', '{noop}asdf');
 
-INSERT INTO user_role(user_id, role)
-VALUES (1, 'ROLE_MASTERADMIN'), (1, 'ROLE_ADMIN'), (1, 'ROLE_USER'), (2, 'ROLE_ADMIN'), (2, 'ROLE_USER'), (3, 'ROLE_USER'), (4, 'ROLE_USER');
+INSERT INTO USER_ROLE(USER_ID, ROLE)
+VALUES
+    (1, 'ROLE_MASTERADMIN'),
+    (1, 'ROLE_ADMIN'),
+    (1, 'ROLE_USER'),
+    (2, 'ROLE_ADMIN'),
+    (2, 'ROLE_USER'),
+    (3, 'ROLE_USER'),
+    (4, 'ROLE_USER');
 
 
 INSERT INTO CATEGORY (TYPE)

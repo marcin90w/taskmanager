@@ -1,19 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<databaseChangeLog
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet author="mwajs" id="001-1">
-
-        <createTable tableName="user">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" /></column>
-            <column name="email" type="text" />
-            <column name="password" type="text" />
-            <column name="password_reset_key" type="text" />
-        </createTable>
 
         <createTable tableName="category">
             <column name="id" type="bigint" autoIncrement="true">
@@ -23,6 +15,33 @@
                 <constraints nullable="false" />
             </column>
         </createTable>
+
+        <createTable tableName="user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" /></column>
+            <column name="email" type="text" >
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="text" >
+                <constraints nullable="false" />
+            </column>
+            <column name="password_reset_key" type="text" />
+        </createTable>
+
+        <createTable tableName="user_role">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" /></column>
+            <column name="user_id" type="int">
+                <constraints nullable="false"
+                              foreignKeyName="fk_user_role_user_id__user_id"
+                              referencedTableName="user"
+                              referencedColumnNames="id" />
+            </column>
+            <column name="role" type="text" >
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
 
         <createTable tableName="task_entity">
             <column name="id" type="bigint" autoIncrement="true">
@@ -40,10 +59,10 @@
                              referencedTableName="category"
                              referencedColumnNames="id" />
             </column>
-            <column name="category_id" type="bigint">
+            <column name="user_id" type="bigint">
                 <constraints nullable="false"
-                             foreignKeyName="fk_task_entity_task_id__category_id"
-                             referencedTableName="category"
+                             foreignKeyName="fk_task_entity_task_id__user_id"
+                             referencedTableName="user"
                              referencedColumnNames="id" />
             </column>
         </createTable>
