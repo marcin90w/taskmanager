@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h2 th:text="${info}">Success</h2>
+    <a href="/">Powrót do strony głównej</a>
+</main>
+</body>
+</html>

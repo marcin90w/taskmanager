@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <title>Lista ToDo</title>
+</head>
+<body>
+
+<main layout:fragment="content">
+    <form method="post" action="/edit-or-add" th:object="${taskToEdit}" class="row g-3" style="margin: 7%" novalidate>
+        <input th:field="*{id}" hidden>
+        <input th:field="*{dateOfSetup}" hidden>
+        <div class="col-md-7">
+            <label class="form-label">Wybierz typ zadania</label>
+            <select class="form-select" th:field="*{category}" required>
+                <option th:each="types: ${categories}" th:value="${types.id}" th:text="${types.type}"></option>
+            </select>
+        </div>
+        <div class="col-10" style="margin-right: 20%">
+            <input class="form-control" pattern="{3-100}"
+                   type="text" id="description" placeholder="opisz zadanie" th:field="*{description}" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Podaj datę Dedlajnu</label>
+            <input type="date" class="form-control" th:field="*{deadline}"/>
+        </div>
+        <div class="form-check form-switch" th:unless="*{description == null}">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" th:field="${taskToEdit.taskDone}" th:checked="${taskToEdit.taskDone}">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Czy zadanie zostało wykonane?</label>
+        </div>
+        <input style="width: 100px" type="submit" th:if="*{description == null}" value="Dodaj!" class="btn btn-primary"/>
+        <input style="width: 100px" type="submit" th:unless="*{description == null}" value="Edytuj!" class="btn btn-primary"/>
+    </form>
+</main>
+
+</body>
+</html>

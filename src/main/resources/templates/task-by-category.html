@@ -52,6 +52,7 @@
                     <th scope="col">Wykonać do</th>
                     <th scope="col">Data ustawienia</th>
                     <th scope="col">Data zakończenia</th>
+                    <th scope="col">Wykonany?</th>
                     <th scope="col">Modyfikuj</th>
                     <th scope="col">Usuń</th>
                 </tr>
@@ -62,6 +63,10 @@
                 <th th:text="${task.deadline}"></th>
                 <th th:text="${task.dateOfSetup}"></th>
                 <th th:text="${task.taskDoneDate}"></th>
+                <th>
+                    <div th:if="${task.taskDone}" th:text="'Tak:)'"></div>
+                    <div th:unless="${task.taskDone}" th:text="'Nie!'"></div>
+                </th>
                 <th>
                     <a th:href="|/edit?id=${task.id}|" th:text="'modify'" class="btn btn-primary"></a>
                 </th>

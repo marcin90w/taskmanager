@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="mwajs" id="001-1">
+
+        <createTable tableName="user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" /></column>
+            <column name="email" type="text" />
+            <column name="password" type="text" />
+            <column name="password_reset_key" type="text" />
+        </createTable>
+
+        <createTable tableName="category">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="task_entity">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" /></column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="task_done" type="boolean" defaultValueBoolean="false"/>
+            <column name="date_of_setup" type="date" />
+            <column name="deadline" type="date" />
+            <column name="task_done_date" type="date" />
+            <column name="category_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_task_entity_task_id__category_id"
+                             referencedTableName="category"
+                             referencedColumnNames="id" />
+            </column>
+            <column name="category_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_task_entity_task_id__category_id"
+                             referencedTableName="category"
+                             referencedColumnNames="id" />
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
