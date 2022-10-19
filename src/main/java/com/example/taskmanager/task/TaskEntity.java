@@ -1,6 +1,7 @@
 package com.example.taskmanager.task;
 
 import com.example.taskmanager.category.Category;
+import com.example.taskmanager.user.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -20,6 +21,8 @@ public class TaskEntity {
     private LocalDate taskDoneDate;
     @ManyToOne
     private Category category;
+    @ManyToOne
+    private User user;
     private Boolean taskDone;
 
     public TaskEntity() {
@@ -27,7 +30,7 @@ public class TaskEntity {
         taskDone = Boolean.FALSE;
     }
 
-    public TaskEntity(Long id, String description, LocalDate dateOfSetup, LocalDate deadline, LocalDate taskDoneDate, Category category, Boolean taskDone) {
+    public TaskEntity(Long id, String description, LocalDate dateOfSetup, LocalDate deadline, LocalDate taskDoneDate, Category category, Boolean taskDone, User user) {
         this.id = id;
         this.description = description;
         this.dateOfSetup = dateOfSetup;
@@ -35,6 +38,7 @@ public class TaskEntity {
         this.taskDoneDate = taskDoneDate;
         this.category = category;
         this.taskDone = taskDone;
+        this.user = user;
     }
 
     public Long getId() {
@@ -43,6 +47,14 @@ public class TaskEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescription() {

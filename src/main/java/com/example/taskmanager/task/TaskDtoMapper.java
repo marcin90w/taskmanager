@@ -14,6 +14,7 @@ public class TaskDtoMapper {
         dto.setDeadline(taskEntity.getDeadline());
         dto.setTaskDone(taskEntity.getTaskDone());
         dto.setTaskDoneDate(taskEntity.getTaskDoneDate());
+        dto.setUser(taskEntity.getUser());
         return dto;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.taskmanager.task;
 
 import com.example.taskmanager.category.Category;
+import com.example.taskmanager.user.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -16,6 +17,8 @@ public class TaskDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate taskDoneDate;
     private Category category;
+
+    private User user;
     private Boolean taskDone;
 
     public Long getId() {
@@ -32,6 +35,14 @@ public class TaskDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDate getTaskDoneDate() {
